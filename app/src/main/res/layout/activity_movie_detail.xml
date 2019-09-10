@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.MovieDetailActivity">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="#FFFFFF">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/moviesBackground"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/gradient_placeholder_image"
+                android:foreground="@drawable/photo_gradient_layer"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/moviePosterWrapper"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="@id/moviesBackground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/moviesBackground">
+
+                <ProgressBar
+                    android:id="@+id/posterProgressBar"
+                    android:layout_width="48dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:elevation="1dp" />
+
+                <ImageView
+                    android:id="@+id/moviesPoster"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/gradient_placeholder_image"
+                    android:scaleType="fitXY" />
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_light_green"
+                android:paddingStart="5dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="3dp"
+                android:text="Released"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@id/moviePosterWrapper"
+                app:layout_constraintTop_toBottomOf="@+id/movieTitle" />
+
+            <TextView
+                android:id="@+id/movieTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:text="Movie Title"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/descriptionTitle"
+                app:layout_constraintStart_toEndOf="@+id/moviePosterWrapper"
+                app:layout_constraintTop_toTopOf="@+id/moviePosterWrapper" />
+
+            <TextView
+                android:id="@+id/releaseDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="12-12-2019"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/status"
+                app:layout_constraintStart_toEndOf="@+id/status"
+                app:layout_constraintTop_toTopOf="@+id/status" />
+
+            <TextView
+                android:id="@+id/moviesRuntime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="0 mins"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
+                app:layout_constraintStart_toEndOf="@id/releaseDate"
+                app:layout_constraintTop_toTopOf="@+id/releaseDate" />
+
+            <ImageView
+                android:id="@+id/ratingIcon"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_star_black_24dp"
+                app:layout_constraintStart_toEndOf="@id/moviePosterWrapper"
+                app:layout_constraintTop_toBottomOf="@+id/releaseDate" />
+
+            <TextView
+                android:id="@+id/itemRating"
+                style="@style/Text.Rating"
+                android:text="7.2"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingIcon"
+                app:layout_constraintStart_toEndOf="@id/ratingIcon"
+                app:layout_constraintTop_toTopOf="@+id/ratingIcon" />
+
+            <TextView
+                android:id="@+id/voteCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="(10293)"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingIcon"
+                app:layout_constraintStart_toEndOf="@id/itemRating"
+                app:layout_constraintTop_toTopOf="@+id/ratingIcon" />
+
+            <LinearLayout
+                android:id="@+id/action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintTop_toBottomOf="@id/moviePosterWrapper"
+                app:layout_goneMarginBottom="@dimen/horizontal_margin">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/favoriteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_bookmark_border_black_24dp"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/unfavoriteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_turned_in_black_24dp"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Favorite"
+                        android:textAlignment="center"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_thumb_up_black_24dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Like"
+                        android:textAlignment="center"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_playlist_add_black_24dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add to Wishlist"
+                        android:textAlignment="center"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/genreTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:text="Genre"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/action" />
+
+            <TextView
+                android:id="@+id/genre1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_light_grey"
+                android:elevation="2dp"
+                android:paddingStart="5dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="3dp"
+                android:text="Action"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="@+id/genreTitle"
+                app:layout_constraintTop_toBottomOf="@+id/genreTitle" />
+
+            <TextView
+                android:id="@+id/genre2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/rounded_light_grey"
+                android:elevation="2dp"
+                android:paddingStart="5dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="3dp"
+                android:text="Adventure"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/genre1"
+                app:layout_constraintStart_toEndOf="@id/genre1"
+                app:layout_constraintTop_toTopOf="@+id/genre1" />
+
+            <TextView
+                android:id="@+id/genre3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/rounded_light_grey"
+                android:elevation="2dp"
+                android:paddingStart="5dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="3dp"
+                android:text="Biography"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/genre1"
+                app:layout_constraintStart_toEndOf="@id/genre2"
+                app:layout_constraintTop_toTopOf="@+id/genre1" />
+
+            <TextView
+                android:id="@+id/descriptionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:text="@string/overview"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/genre1"
+                tools:layout_editor_absoluteY="358dp" />
+
+            <com.borjabravo.readmoretextview.ReadMoreTextView
+                android:id="@+id/movieDescription"
+                android:text="Lorem Ipsum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                app:layout_constraintTop_toBottomOf="@id/descriptionTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:trimLength="200" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                app:layout_constraintTop_toBottomOf="@id/movieDescription"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <Button
+                    android:id="@+id/bookButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:text="Book a Ticket"
+                    android:background="@drawable/rounded_red"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="#FFFFFF"
+                    android:elevation="3dp"/>
+
+                <Button
+                    android:id="@+id/buyButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Buy Movie"
+                    android:background="@drawable/rounded_red"
+                    android:textColor="#FFFFFF"
+                    android:elevation="3dp"/>
+
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

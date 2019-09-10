@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Movie Catalogue</string>
+
+    <string name="user_name">Rafi Bagaskara A. U.</string>
+
+    <string name="temp_title">Judul Film</string>
+
+    <string name="nav_movie">Film</string>
+    <string name="nav_tv">Acara Tv</string>
+    <string name="nav_library">Perpustakaan</string>
+
+    <string name="sec_nowShowing">Sedang Tayang</string>
+    <string name="sec_popular">Populer</string>
+    <string name="sec_onAir">Tayang di Tv</string>
+
+    <string name="desc">Deskripsi</string>
+    <string name="overview">Ringkasan</string>
+
+    <string name="state_emptyFavorite">Anda tidak memiliki item favorit, Anda dapat menambahkannya di halaman detail film / tv</string>
+
+</resources>
