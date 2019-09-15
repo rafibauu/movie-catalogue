@@ -10,6 +10,7 @@
     <string name="nav_movie">Film</string>
     <string name="nav_tv">Acara Tv</string>
     <string name="nav_library">Perpustakaan</string>
+    <string name="nav_search">Pencarian</string>
 
     <string name="sec_nowShowing">Sedang Tayang</string>
     <string name="sec_popular">Populer</string>

@@ -3,11 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#00FFFFFF"
-    app:titleTextColor="@color/white"
-    app:title="Detail"
-    android:elevation="1dp"
-    app:popupTheme="@color/black"
-    android:fitsSystemWindows="true">
+    android:background="#FFFFFF"
+    app:titleTextColor="@color/black"
+    app:title="Search"
+    android:elevation="1dp">
 
 </android.support.v7.widget.Toolbar>

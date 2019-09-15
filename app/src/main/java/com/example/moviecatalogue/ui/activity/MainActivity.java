@@ -7,11 +7,12 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toolbar;
 
 import com.example.moviecatalogue.R;
+import com.example.moviecatalogue.ui.fragment.SearchFragment;
 import com.example.moviecatalogue.ui.fragment.LibraryFragment;
 import com.example.moviecatalogue.ui.fragment.MovieFragment;
 import com.example.moviecatalogue.ui.fragment.TvFragment;
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.mainToolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.mainToolbar);
+//        setSupportActionBar(toolbar);
 
         BottomMainNav = findViewById(R.id.bottom_main_nav);
         BottomMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new TvFragment();
                         title = "Home";
                         break;
+                    case R.id.bottom_nav_search:
+                        fragment = new SearchFragment();
+                        title = "Search";
                     case R.id.bottom_nav_library:
                         fragment = new LibraryFragment();
                         title = "Library";

@@ -82,14 +82,14 @@ public class MovieFragment extends Fragment {
 //            }
 //        });
 
-        viewPager = view.findViewById(R.id.imageSlider);
-        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(getActivity());
-        viewPager.setAdapter(imageSliderAdapter);
+//        viewPager = view.findViewById(R.id.imageSlider);
+//        ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(getActivity());
+//        viewPager.setAdapter(imageSliderAdapter);
 
         // Carousel
-//        carouselView = view.findViewById(R.id.carouselView);
-//        carouselView.setPageCount(sampleImages.length);
-//        carouselView.setImageListener(imageListener);
+        carouselView = view.findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
+        carouselView.setImageListener(imageListener);
 
         // Now Playing Movie
         rvMovie = view.findViewById(R.id.movieList);
@@ -135,16 +135,16 @@ public class MovieFragment extends Fragment {
 
     }
 
-//    ImageListener imageListener = new ImageListener() {
-//        @Override
-//        public void setImageForPosition(int position, ImageView imageView) {
-//            Picasso
-//                    .get()
-//                    .load(sampleImages[position])
-//                    .fit()
-//                    .into(imageView);
-//        }
-//    };
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            Picasso
+                    .get()
+                    .load(sampleImages[position])
+                    .fit()
+                    .into(imageView);
+        }
+    };
 
     private void latestProgressBar(Boolean state) {
         if (state) {

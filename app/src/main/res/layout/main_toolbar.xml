@@ -5,8 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF"
     app:titleTextColor="@color/black"
-    app:title="Movie"
-    android:elevation="1dp"
-    app:navigationIcon="@drawable/ic_turned_in_black_24dp">
+    app:title="Movie Catalogue"
+    android:elevation="1dp">
 
 </android.support.v7.widget.Toolbar>

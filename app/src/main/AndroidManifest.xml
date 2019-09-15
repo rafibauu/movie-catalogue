@@ -17,7 +17,7 @@
             android:theme="@style/NoActionBarLayout" />
         <activity
             android:name=".ui.activity.MovieDetailActivity"
-            android:theme="@style/AppTheme.Transparent" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activity.SplashScreenActivity"
             android:theme="@style/SplashScreen">
@@ -29,7 +29,7 @@
         </activity>
         <activity
             android:name=".ui.activity.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

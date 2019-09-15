@@ -59,36 +59,6 @@ public class LibraryFragment extends Fragment {
         tabLayout = view.findViewById(R.id.libraryTabLayout);
         tabLayout.setupWithViewPager(viewPager);
 
-
-//        rvFavorite = view.findViewById(R.id.list);
-//        rvFavorite.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        rvFavorite.setHasFixedSize(true);
-//
-//        favoriteAdapter = new FavoriteAdapter(getActivity());
-//
-//        vmAllFavorite = ViewModelProviders.of(getActivity()).get(LibraryFragmentViewModel.class);
-//        vmAllFavorite.getAllFavorites().observe(this, new Observer<List<Favorite>>() {
-//            @Override
-//            public void onChanged(@Nullable List<Favorite> favorites) {
-//                favoriteAdapter.setFavoriteList(favorites);
-//                rvFavorite.setAdapter(favoriteAdapter);
-//            }
-//        });
-//
-//        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-//                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-//            @Override
-//            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-//                vmAllFavorite.delete(favoriteAdapter.getNoteAt(viewHolder.getAdapterPosition()));
-//                Toast.makeText(getActivity(), "Deleted", Toast.LENGTH_SHORT).show();
-//            }
-//        }).attachToRecyclerView(rvFavorite);
-
         return view;
     }
 

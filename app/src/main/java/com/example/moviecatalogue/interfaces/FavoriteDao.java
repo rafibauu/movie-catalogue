@@ -36,7 +36,6 @@ public interface FavoriteDao {
     @Query("SELECT * FROM favorite where itemKind='tv' ")
     LiveData<List<Favorite>> getAllFavoriteTvs();
 
-
     @Query("SELECT * FROM favorite ORDER BY id DESC")
     LiveData<List<Favorite>> getAllFavorite();
 

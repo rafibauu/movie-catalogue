@@ -15,7 +15,7 @@
     </style>
 
     <style name="NoActionBarLayout" parent="Theme.AppCompat.Light.NoActionBar">
-
+        <item name="colorControlNormal">@color/white</item>
     </style>
 
     <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">

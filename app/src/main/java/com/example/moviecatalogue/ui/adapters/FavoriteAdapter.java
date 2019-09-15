@@ -43,7 +43,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View rowItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorite_item, parent, false);
+        View rowItem = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.favorite_item, parent, false);
         return new ViewHolder(rowItem);
     }
 
