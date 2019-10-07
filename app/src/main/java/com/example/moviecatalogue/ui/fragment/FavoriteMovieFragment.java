@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.moviecatalogue.R;
+import com.example.moviecatalogue.provider.FavoriteFactory;
 import com.example.moviecatalogue.models.Favorite;
 import com.example.moviecatalogue.ui.adapters.FavoriteAdapter;
 import com.example.moviecatalogue.viewmodels.LibraryFragmentViewModel;
@@ -47,9 +48,11 @@ public class FavoriteMovieFragment extends Fragment {
         rvFavorite.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvFavorite.setHasFixedSize(true);
 
-        favoriteAdapter = new FavoriteAdapter(getActivity());
+        favoriteAdapter = new FavoriteAdapter(getContext());
 
-        vmAllFavorite = ViewModelProviders.of(getActivity()).get(LibraryFragmentViewModel.class);
+        vmAllFavorite = ViewModelProviders.of(getActivity(),
+                new FavoriteFactory(getActivity().getApplication())).get(LibraryFragmentViewModel.class);
+//        vmAllFavorite = ViewModelProviders.of(getActivity()).get(LibraryFragmentViewModel.class);
         vmAllFavorite.getAllFavoriteMovies().observe(this, new Observer<List<Favorite>>() {
             @Override
             public void onChanged(@Nullable List<Favorite> favorites) {

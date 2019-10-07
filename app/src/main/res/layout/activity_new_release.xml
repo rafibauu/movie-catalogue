@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.activity.NewReleaseActivity">
+
+    <TextView
+        android:id="@+id/movieNewReleaseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movie"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"/>
+
+    <ProgressBar
+        android:id="@+id/movieNewReleaseProgressbar"
+        android:layout_below="@id/movieNewReleaseTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_width="48dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="25dp"
+        android:elevation="1dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/movieNewReleaseTitle"
+        android:id="@+id/movieNewReleaseList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="165dp"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        tools:listitem="@layout/index_item_view"
+        android:orientation="horizontal"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tvNewReleaseTitle"
+        android:layout_below="@id/movieNewReleaseList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tv Show"
+        android:layout_marginTop="@dimen/vertical_margin"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"/>
+
+    <ProgressBar
+        android:id="@+id/tvNewReleaseProgressbar"
+        android:layout_below="@id/tvNewReleaseTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_width="48dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="25dp"
+        android:elevation="1dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/tvNewReleaseList"
+        android:layout_below="@id/tvNewReleaseTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="165dp"
+        android:layout_margin="@dimen/vertical_margin"
+        tools:listitem="@layout/index_item_view"
+        android:orientation="horizontal"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

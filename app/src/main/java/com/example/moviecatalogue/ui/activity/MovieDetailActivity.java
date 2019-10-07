@@ -1,7 +1,10 @@
 package com.example.moviecatalogue.ui.activity;
 
+import android.appwidget.AppWidgetManager;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentName;
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +31,7 @@ import com.example.moviecatalogue.R;
 import com.example.moviecatalogue.models.Favorite;
 import com.example.moviecatalogue.models.Movie;
 import com.example.moviecatalogue.viewmodels.LibraryFragmentViewModel;
+import com.example.moviecatalogue.widget.FavoriteMovieWidget;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -63,11 +68,9 @@ public class MovieDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
 
-//        View decorView = getWindow().getDecorView();
-//        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-//
-////        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        Window window = getWindow();
+        window.setStatusBarColor(getResources().getColor(R.color.lightGrey));
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 //
         Toolbar toolbar = findViewById(R.id.detailToolbar);
         setSupportActionBar(toolbar);
@@ -125,6 +128,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                         movie.getRating());
                 vmAllFavorite.insert(favorite);
                 Toast.makeText(getApplicationContext(), "Added to favorite", Toast.LENGTH_SHORT).show();
+                updateWidget();
             }
         });
 
@@ -136,6 +140,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                         movie.getRating());
                 vmAllFavorite.delete(favorite);
                 Toast.makeText(getApplicationContext(), "Deleted from favorite", Toast.LENGTH_SHORT).show();
+                updateWidget();
             }
         });
 
@@ -175,19 +180,19 @@ public class MovieDetailActivity extends AppCompatActivity {
 
                             for (int j = 0 ; j < genres.length(); j++)
                             {
-                                JSONObject gen1 = genres.getJSONObject(j);
-                                genre3.setText(gen1.getString("name"));
-                                Log.d("DETAIL", "onResponse: " + gen1.getString("name"));
-//                                if ( j == 0 ) {
-//                                    JSONObject gen1 = genres.getJSONObject(j);
-//                                    genre1.setText(gen1.getString("name"));
-//                                } else if ( j == 1 ) {
-//                                    JSONObject gen2 = genres.getJSONObject(j);
-//                                    genre2.setText(gen2.getString("name"));
-//                                } else if ( j == 3 ) {
-//                                    JSONObject gen3 = genres.getJSONObject(j);
-//                                    genre3.setText(gen3.getString("name"));
-//                                }
+                                if ( j == 0 ) {
+                                    JSONObject gen1 = genres.getJSONObject(j);
+                                    genre1.setText(gen1.getString("name"));
+                                    genre1.setVisibility(View.VISIBLE);
+                                } else if ( j == 1 ) {
+                                    JSONObject gen2 = genres.getJSONObject(j);
+                                    genre2.setText(gen2.getString("name"));
+                                    genre2.setVisibility(View.VISIBLE);
+                                } else if ( j == 3 ) {
+                                    JSONObject gen3 = genres.getJSONObject(j);
+                                    genre3.setText(gen3.getString("name"));
+                                    genre3.setVisibility(View.VISIBLE);
+                                }
                             }
 
                         } catch (JSONException e) {
@@ -223,4 +228,11 @@ public class MovieDetailActivity extends AppCompatActivity {
         }
     }
 
+    private void updateWidget() {
+        Context context = getApplicationContext();
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        ComponentName thisWidget = new ComponentName(context, FavoriteMovieWidget.class);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.stack_view);
+    }
 }

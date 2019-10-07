@@ -9,5 +9,9 @@
 
     <color name="primaryFirstGradient">#D81B60</color>
 
+    <color name="primaryRed">#f6494a</color>
+    <color name="primaryBlue">#3557dd</color>
+    <color name="primaryGreen">#00A292</color>
+
     <color name="trans">#005E35B1</color>
 </resources>

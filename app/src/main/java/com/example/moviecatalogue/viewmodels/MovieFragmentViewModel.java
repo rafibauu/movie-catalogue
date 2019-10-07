@@ -10,6 +10,8 @@ import com.example.moviecatalogue.models.Movie;
 import com.example.moviecatalogue.models.MovieResponse;
 import com.example.moviecatalogue.services.ApiService;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -22,6 +24,8 @@ public class MovieFragmentViewModel extends ViewModel {
 
     private MutableLiveData<List<Movie>> allMovie;
     private MutableLiveData<List<Movie>> popularMovies;
+    private MutableLiveData<List<Movie>> searchMovie;
+    private MutableLiveData<List<Movie>> newRelease;
 
     public LiveData<List<Movie>> getAllMovie() {
         if (allMovie == null) {
@@ -37,6 +41,20 @@ public class MovieFragmentViewModel extends ViewModel {
             loadPopularMovies();
         }
         return popularMovies;
+    }
+
+    public LiveData<List<Movie>> searchMovie(String query) {
+        searchMovie = new MutableLiveData<List<Movie>>();
+        loadSearchMovie(query);
+        return searchMovie;
+    }
+
+    public LiveData<List<Movie>> newRelease() {
+        if (newRelease == null) {
+            newRelease = new MutableLiveData<List<Movie>>();
+            loadNewRelease();
+        }
+        return newRelease;
     }
 
     private void loadAllMovie() {
@@ -64,6 +82,43 @@ public class MovieFragmentViewModel extends ViewModel {
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                 List<Movie> movies = response.body().getMovies();
                 popularMovies.postValue(movies);
+            }
+
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+                Log.d("Error", t.getMessage());
+            }
+        });
+    }
+
+    private void loadSearchMovie(String query) {
+        MovieInterface movieInterface = ApiService.getData().create(MovieInterface.class);
+        Call<MovieResponse> call = movieInterface.searchMovie(API_KEY, query);
+        call.enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                List<Movie> movies = response.body().getMovies();
+                searchMovie.postValue(movies);
+            }
+
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+                Log.d("Error", t.getMessage());
+            }
+        });
+    }
+
+    private void loadNewRelease() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        String date = dateFormat.format(calendar.getTime());
+        MovieInterface movieInterface = ApiService.getData().create(MovieInterface.class);
+        Call<MovieResponse> call = movieInterface.newRelease(API_KEY, date, date);
+        call.enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                List<Movie> movies = response.body().getMovies();
+                newRelease.postValue(movies);
             }
 
             @Override

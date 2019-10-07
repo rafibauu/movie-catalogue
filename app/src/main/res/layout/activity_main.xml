@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity">
 
-    <!--<include-->
-        <!--android:id="@+id/mainToolbar"-->
-        <!--layout="@layout/main_toolbar">-->
-    <!--</include>-->
-
     <FrameLayout
         android:id="@+id/main_frame"
         android:layout_width="match_parent"

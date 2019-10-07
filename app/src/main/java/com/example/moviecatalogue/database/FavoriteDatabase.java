@@ -1,17 +1,14 @@
 package com.example.moviecatalogue.database;
 
-import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.os.AsyncTask;
-import android.support.annotation.NonNull;
 
 import com.example.moviecatalogue.interfaces.FavoriteDao;
 import com.example.moviecatalogue.models.Favorite;
 
-@Database(entities = {Favorite.class}, version = 3)
+@Database(entities = {Favorite.class}, version = 5)
 public abstract class FavoriteDatabase extends RoomDatabase {
 
     private static FavoriteDatabase instance;
@@ -29,15 +26,6 @@ public abstract class FavoriteDatabase extends RoomDatabase {
         return instance;
     }
 
-//    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
-//
-//        @Override
-//        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-//            super.onCreate(db);
-//            new PopulateDdAsyncTask(instance).execute();
-//        }
-//    };
-//
 //    private static class PopulateDdAsyncTask extends AsyncTask<Void, Void, Void> {
 //        private FavoriteDao favoriteDao;
 //

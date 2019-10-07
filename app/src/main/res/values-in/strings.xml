@@ -9,8 +9,8 @@
 
     <string name="nav_movie">Film</string>
     <string name="nav_tv">Acara Tv</string>
-    <string name="nav_library">Perpustakaan</string>
     <string name="nav_search">Pencarian</string>
+    <string name="nav_profile">Profil</string>
 
     <string name="sec_nowShowing">Sedang Tayang</string>
     <string name="sec_popular">Populer</string>
@@ -20,5 +20,19 @@
     <string name="overview">Ringkasan</string>
 
     <string name="state_emptyFavorite">Anda tidak memiliki item favorit, Anda dapat menambahkannya di halaman detail film / tv</string>
+
+    <string name="set_language">Pilih Bahasa</string>
+
+    <string name="not_found">Pencarian tidak ditemukan</string>
+
+    <string name="daily_reminder">Penigngat Harian</string>
+    <string name="daily_reminder_desc">Sudah lama, apakah kamu merindukan kami?</string>
+    <string name="new_release_reminder">Pengingat Release Baru</string>
+    <string name="new_release_reminder_desc">Lihat beberapa film dan acara tv terbaru hari ini!</string>
+
+    <string name="language">Bahasa</string>
+    <string name="setting">Pengaturan</string>
+    <string name="search">Pencarian</string>
+    <string name="new_release">Tayang Perdana</string>
 
 </resources>

@@ -7,6 +7,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
+import android.database.Cursor;
 
 import com.example.moviecatalogue.models.Favorite;
 
@@ -33,10 +34,16 @@ public interface FavoriteDao {
     @Query("SELECT * FROM favorite where itemKind='movie' ")
     LiveData<List<Favorite>> getAllFavoriteMovies();
 
+    @Query("SELECT * FROM favorite where itemKind='movie' ")
+    List<Favorite> getFavoriteToWidget();
+
     @Query("SELECT * FROM favorite where itemKind='tv' ")
     LiveData<List<Favorite>> getAllFavoriteTvs();
 
     @Query("SELECT * FROM favorite ORDER BY id DESC")
     LiveData<List<Favorite>> getAllFavorite();
+
+    @Query("SELECT * FROM favorite")
+    Cursor selectAll();
 
 }

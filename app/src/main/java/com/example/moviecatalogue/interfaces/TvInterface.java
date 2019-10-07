@@ -15,4 +15,13 @@ public interface TvInterface {
     @GET("3/tv/{id}")
     Call<TvResponse> getTvDetails(@Path("id") String kind, @Query("api_key") String apiKey);
 
+    @GET("3/search/tv")
+    Call<TvResponse> searchTv(@Query("api_key") String apiKey, @Query("query") String query);
+
+    @GET("3/discover/tv")
+    Call<TvResponse> newRelease(
+            @Query("api_key") String apiKey,
+            @Query("primary_release_date.gte") String date1,
+            @Query("primary_release_date.lte") String date2);
+
 }

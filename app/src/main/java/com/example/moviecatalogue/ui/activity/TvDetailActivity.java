@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +44,9 @@ public class TvDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_detail);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        Window window = getWindow();
+        window.setStatusBarColor(getResources().getColor(R.color.lightGrey));
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
         tv = getIntent().getParcelableExtra(EXTRA_MOVIE);
 

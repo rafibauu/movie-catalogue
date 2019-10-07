@@ -8,8 +8,8 @@
 
     <string name="nav_movie">Movie</string>
     <string name="nav_tv">Tv Show</string>
-    <string name="nav_library">Library</string>
     <string name="nav_search">Search</string>
+    <string name="nav_profile">Profile</string>
 
     <string name="sec_nowShowing">Now Showing</string>
     <string name="sec_popular">Popular</string>
@@ -20,8 +20,22 @@
 
     <string name="state_emptyFavorite">You don\'t have an favorite item, you can add it in movie/tv detail page</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="set_language">Choose Languange</string>
+
+    <string name="not_found">Nothing found</string>
+
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="daily_reminder_desc">It is been a while, don\'t you miss us ?</string>
+    <string name="new_release_reminder">Release Today Reminder</string>
+    <string name="new_release_reminder_desc">See new release movies and tv show!</string>
+
+    <string name="language">Language</string>
+    <string name="setting">Setting</string>
+    <string name="search">Search</string>
+    <string name="new_release">New Release</string>
 
 </resources>
 

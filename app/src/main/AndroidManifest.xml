@@ -4,6 +4,15 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <permission
+        android:name="com.example.moviecatalogue.READ_DATABASE"
+        android:protectionLevel="normal" />
+
+    <permission
+        android:name="com.example.moviecatalogue.WRITE_DATABASE"
+        android:protectionLevel="normal" />
 
     <application
         android:allowBackup="true"
@@ -12,12 +21,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name=".provider.FavoriteContentProvider"
+            android:authorities="com.example.moviecatalogue.provider"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.example.moviecatalogue.READ_DATABASE"
+            android:writePermission="com.example.moviecatalogue.WRITE_DATABASE">
+        </provider>
+        <activity android:name=".ui.activity.NewReleaseActivity" />
         <activity
             android:name=".ui.activity.TvDetailActivity"
             android:theme="@style/NoActionBarLayout" />
         <activity
             android:name=".ui.activity.MovieDetailActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/NoActionBarLayout" />
         <activity
             android:name=".ui.activity.SplashScreenActivity"
             android:theme="@style/SplashScreen">
@@ -27,9 +45,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".notification.DailyReminder" />
+        <receiver android:name=".notification.DailyReminderDeviceBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".notification.ReleaseTodayReminder" />
+
         <activity
             android:name=".ui.activity.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
+        <receiver android:name=".widget.FavoriteMovieWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/favorite_movie_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".widget.StackWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>
